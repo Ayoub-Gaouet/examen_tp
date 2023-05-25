@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% block title%} Liste des Articles{% endblock %}
+
+{% block body %}
+    <h1>Liste des Articles</h1>
+    <table class=\"table\">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Contenu</th>
+                <th>Date de création</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for article in articles %}
+                <tr>
+                    <td>{{ article.id }}</td>
+                    <td>{{ article.titre }}</td>
+                    <td>{{ article.contenu }}</td>
+                    <td>{{ article.dateDePublication | date('d/m/Y') }}</td>
+
+                    <td>
+                        <a href="{{ path('article_show', {'id': article.id}) }}">Voir</a>                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
